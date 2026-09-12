@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Afrooz Areffard — Atessa | Comparative Mythology Writer &amp; Researcher</title>
+<meta name="description" content="Afrooz Areffard, pen name Atessa — writer and independent researcher in comparative mythology. Author of Blood and Blossom: How Ancient Myths Live On in Plants.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --void:       #17120D;
+    --void-deep:  #0D0A07;
+    --parch:      #E8DDC0;
+    --parch-dim:  #B9A97F;
+    --gold:       #C6A038;
+    --gold-bright:#E7C766;
+    --oxblood:    #641E1E;
+    --oxblood-br: #8A2C2C;
+
+    --display: "Cormorant Garamond", Georgia, serif;
+    --body: "EB Garamond", Georgia, serif;
+    --label: "Cinzel", Georgia, serif;
+
+    --measure: 66ch;
+    --hairline: 1px solid rgba(198,160,56,0.35);
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse 900px 500px at 50% 0%, rgba(198,160,56,0.08), transparent 60%),
+      var(--void);
+    color:var(--parch);
+    font-family:var(--body);
+    font-size:18px;
+    line-height:1.68;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{ color:inherit; }
+  ::selection{ background:var(--oxblood-br); color:var(--gold-bright); }
+
+  .wrap{ max-width:920px; margin:0 auto; padding:0 clamp(20px,6vw,56px); }
+
+  section{ padding:108px 0; border-bottom:var(--hairline); position:relative; overflow:hidden; }
+  section:last-of-type{ border-bottom:none; }
+  section .wrap{ position:relative; z-index:1; }
+
+  .bg-motif{ position:absolute; pointer-events:none; z-index:0; opacity:0.9; }
+
+  h1,h2,h3{ font-family:var(--display); font-weight:600; color:var(--gold-bright); margin:0 0 .45em 0; letter-spacing:.005em; }
+  h2{ font-size:clamp(30px,3.6vw,42px); font-style:italic; font-weight:500; }
+  p{ max-width:var(--measure); color:var(--parch-dim); }
+  .lede{ color:var(--parch); font-size:1.12em; }
+
+  .plate-no{
+    font-family:var(--label); font-size:11.5px; letter-spacing:.22em; color:var(--gold);
+    display:flex; align-items:center; gap:12px; margin-bottom:22px;
+  }
+  .plate-no::before, .plate-no::after{ content:""; height:1px; width:30px; background:var(--gold); opacity:.6; }
+
+  /* fleuron divider */
+  .fleuron{ display:flex; justify-content:center; margin:0; }
+  .fleuron svg{ width:60px; height:28px; }
+
+  /* ---------- nav ---------- */
+  header.site{ position:sticky; top:0; z-index:40; background:rgba(23,18,13,0.86); backdrop-filter:blur(10px); border-bottom:var(--hairline); }
+  .nav-inner{ display:flex; align-items:center; justify-content:space-between; padding:20px clamp(20px,6vw,56px); max-width:1080px; margin:0 auto; }
+  .brand{ font-family:var(--label); letter-spacing:.16em; font-size:15px; text-decoration:none; color:var(--gold-bright); display:flex; align-items:center; gap:10px; }
+  .brand svg{ width:20px; height:20px; }
+  nav.links{ display:flex; gap:30px; font-size:12.5px; letter-spacing:.14em; font-family:var(--label); }
+  nav.links a{ text-decoration:none; color:var(--parch-dim); }
+  nav.links a:hover{ color:var(--gold-bright); }
+  .nav-toggle{ display:none; background:none; border:none; cursor:pointer; color:var(--gold-bright); }
+  @media (max-width:700px){
+    nav.links{ position:fixed; inset:64px 0 auto 0; background:var(--void); flex-direction:column; padding:22px clamp(20px,6vw,56px) 28px;
+      border-bottom:var(--hairline); gap:18px; transform:translateY(-8px); opacity:0; pointer-events:none; transition:.22s ease; }
+    nav.links.open{ transform:translateY(0); opacity:1; pointer-events:auto; }
+    .nav-toggle{ display:block; }
+  }
+
+  /* ---------- hero ---------- */
+  .hero{ padding-top:88px; padding-bottom:96px; text-align:center; }
+  .hero .kicker{ font-family:var(--label); font-size:11.5px; letter-spacing:.26em; color:var(--gold); margin-bottom:30px; }
+  .hero-frame{ display:flex; justify-content:center; margin:0 auto 36px; }
+  .hero-frame svg{ width:min(320px, 70vw); height:auto; }
+  .hero h1{ font-size:clamp(40px,6.2vw,64px); font-style:italic; line-height:1.08; max-width:16ch; margin:0 auto 18px; }
+  .hero h1 .accent{ color:#C9635A; }
+  .hero .role{ font-family:var(--body); font-style:italic; font-size:18px; color:var(--parch-dim); margin-bottom:28px; }
+  .hero p.lede{ max-width:56ch; margin:0 auto; font-size:18px; }
+  .hero-actions{ display:flex; gap:16px; justify-content:center; margin-top:40px; flex-wrap:wrap; }
+
+  .btn{ display:inline-flex; align-items:center; gap:8px; font-family:var(--label); font-size:12px; letter-spacing:.12em;
+    padding:14px 28px; text-decoration:none; border:1px solid var(--gold); transition:.2s ease; }
+  .btn.solid{ background:var(--gold); color:var(--void-deep); }
+  .btn.solid:hover{ background:var(--gold-bright); }
+  .btn.ghost{ color:var(--gold-bright); background:transparent; }
+  .btn.ghost:hover{ background:rgba(198,160,56,0.12); }
+
+  /* ---------- about ---------- */
+  .about-inner{ max-width:720px; margin:0 auto; text-align:center; }
+  .about-inner .plate-no{ justify-content:center; }
+  .about-inner h2{ margin:0 auto 40px; }
+
+  .pull{ font-family:var(--display); font-style:italic; font-size:25px; line-height:1.5; color:var(--gold-bright);
+    max-width:32ch; margin:0 auto 48px; position:relative; padding:0 10px; }
+  .pull::before, .pull::after{ font-family:var(--display); color:var(--gold); font-size:34px; opacity:.6; }
+  .pull::before{ content:"\201C"; }
+  .pull::after{ content:"\201D"; }
+
+  .bio{ text-align:left; }
+  .bio p:first-of-type::first-letter{
+    font-family:var(--display); font-style:italic; font-weight:600; font-size:62px; line-height:0.7;
+    float:left; padding:8px 10px 0 0; color:var(--gold);
+  }
+
+  .facts{ margin-top:36px; display:grid; grid-template-columns:repeat(4,1fr); gap:0; border-top:var(--hairline); }
+  .fact{ padding:20px 14px; border-right:var(--hairline); text-align:center; }
+  .fact:last-child{ border-right:none; }
+  .fact dt{ font-family:var(--label); font-size:10px; letter-spacing:.14em; color:var(--gold); margin-bottom:8px; }
+  .fact dd{ margin:0; font-size:14.5px; color:var(--parch-dim); }
+  @media (max-width:700px){ .facts{ grid-template-columns:1fr 1fr; } .fact{ border-bottom:var(--hairline); } }
+
+  /* ---------- myths plates ---------- */
+  .plates-grid{ display:grid; grid-template-columns:repeat(5,1fr); gap:26px; margin-top:48px; }
+  @media (max-width:900px){ .plates-grid{ grid-template-columns:repeat(3,1fr); } }
+  @media (max-width:560px){ .plates-grid{ grid-template-columns:repeat(2,1fr); } }
+  .plate{ text-align:center; }
+  .plate-frame{ border:1px solid var(--gold); padding:8px; position:relative; background:rgba(0,0,0,0.18); }
+  .plate-frame::before{ content:""; position:absolute; inset:3px; border:1px solid rgba(198,160,56,0.4); pointer-events:none; }
+  .plate-frame svg{ width:100%; height:auto; display:block; }
+  .plate-cap{ margin-top:14px; font-family:var(--display); font-style:italic; font-size:15px; color:var(--gold-bright); }
+  .plate-sub{ font-family:var(--label); font-size:9px; letter-spacing:.1em; color:var(--parch-dim); margin-top:4px; }
+
+  /* ---------- book ---------- */
+  .book-grid{ display:grid; grid-template-columns:300px 1fr; gap:64px; align-items:start; }
+  @media (max-width:820px){ .book-grid{ grid-template-columns:1fr; justify-items:center; } }
+
+  .frame{ padding:14px; border:1px solid var(--gold); position:relative; }
+  .frame::before{ content:""; position:absolute; inset:6px; border:1px solid rgba(198,160,56,0.5); pointer-events:none; }
+  .frame .corner{ position:absolute; width:20px; height:20px; }
+  .frame .corner svg{ width:100%; height:100%; }
+  .frame .c-tl{ top:-2px; left:-2px; } .frame .c-tr{ top:-2px; right:-2px; transform:scaleX(-1); }
+  .frame .c-bl{ bottom:-2px; left:-2px; transform:scaleY(-1); } .frame .c-br{ bottom:-2px; right:-2px; transform:scale(-1,-1); }
+
+  .frame-inner{ aspect-ratio:5/7.7; width:270px; position:relative; overflow:hidden;
+    background: radial-gradient(120% 90% at 20% 0%, rgba(198,160,56,0.16), transparent 55%), linear-gradient(165deg, var(--oxblood-br) 0%, var(--oxblood) 60%, #3B1010 100%);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .frame-inner img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+  .cov-fallback{ text-align:center; padding:20px; }
+  .cov-fallback .cov-eyebrow{ font-family:var(--label); font-size:10px; letter-spacing:.2em; color:var(--gold); }
+  .cov-fallback .cov-title{ font-family:var(--display); font-style:italic; font-size:26px; color:var(--parch); margin:16px 0 6px; }
+  .cov-fallback .cov-sub{ font-family:var(--body); font-size:12px; color:rgba(232,221,192,0.65); }
+  .cov-fallback svg{ width:46px; height:46px; margin-top:18px; opacity:.75; }
+
+  .book-copy p{ max-width:54ch; }
+  .culture-row{ display:flex; flex-wrap:wrap; gap:10px; margin:26px 0 30px; }
+  .chip{ font-family:var(--label); font-size:10.5px; letter-spacing:.08em; padding:8px 14px; border:1px solid rgba(198,160,56,0.5); color:var(--parch-dim); }
+  .book-buy{ display:flex; gap:14px; flex-wrap:wrap; margin-top:6px; }
+
+  /* ---------- research ---------- */
+  .research-wrap{ max-width:620px; }
+  .card{ border:var(--hairline); padding:32px 30px; position:relative; }
+  .card::before{ content:""; position:absolute; inset:5px; border:1px solid rgba(198,160,56,0.18); pointer-events:none; }
+  .card h3{ font-size:21px; font-style:italic; font-weight:500; }
+  .card p{ font-size:15.5px; }
+  .tag-status{ display:inline-block; font-family:var(--label); font-size:10px; letter-spacing:.14em; color:var(--gold);
+    border:1px solid var(--gold); padding:4px 12px; margin-bottom:16px; }
+
+  /* ---------- writing ---------- */
+  .writing-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:44px; }
+  @media (max-width:780px){ .writing-grid{ grid-template-columns:1fr; } }
+  .wcard{ border-top:var(--hairline); padding-top:22px; }
+  .wcard .num{ font-family:var(--display); font-style:italic; color:var(--gold); font-size:15px; }
+  .wcard h3{ font-size:19px; margin-top:8px; }
+  .wcard p{ font-size:15px; }
+
+  /* ---------- contact ---------- */
+  .contact-grid{ display:grid; grid-template-columns:1.2fr .8fr; gap:60px; align-items:start; }
+  @media (max-width:780px){ .contact-grid{ grid-template-columns:1fr; } }
+  .social-list{ list-style:none; margin:0; padding:0; }
+  .social-list li{ border-top:var(--hairline); }
+  .social-list li:first-child{ border-top:none; }
+  .social-list a{ display:flex; align-items:center; justify-content:space-between; padding:18px 2px; text-decoration:none;
+    color:var(--gold-bright); font-family:var(--display); font-style:italic; font-size:20px; }
+  .social-list a span.h{ font-family:var(--body); font-style:normal; font-size:13.5px; color:var(--parch-dim); }
+  .social-list a:hover{ color:var(--parch); }
+
+  footer{ padding:46px clamp(20px,6vw,56px); text-align:center; font-family:var(--label); font-size:10.5px; letter-spacing:.14em; color:var(--parch-dim); }
+  footer svg{ width:18px; height:18px; margin-bottom:14px; color:var(--gold); }
+
+  .reveal{ opacity:0; transform:translateY(14px); transition:opacity .8s ease, transform .8s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="nav-inner">
+    <a class="brand" href="#top">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M12 22V10M12 10C12 6 9 4 6 4c0 4 2 6 6 6ZM12 10c0-4 3-6 6-6 0 4-2 6-6 6Z" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Atessa
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" id="navToggle">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+    </button>
+    <nav class="links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#book">The Book</a>
+      <a href="#research">Research</a>
+      <a href="#writing">Writing</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="kicker">COMPARATIVE&nbsp;MYTHOLOGY&nbsp;&middot;&nbsp;LEICESTER,&nbsp;UK</div>
+
+      <div class="hero-frame reveal" id="heroArt">
+        <svg viewBox="0 0 300 340" fill="none">
+          <!-- gothic pointed arch -->
+          <path d="M20 320 V150 C20 70 80 20 150 20 C220 20 280 70 280 150 V320" stroke="#C6A038" stroke-width="1.4"/>
+          <path d="M34 320 V152 C34 80 86 34 150 34 C214 34 266 80 266 152 V320" stroke="#C6A038" stroke-width="0.7" opacity="0.55"/>
+          <!-- engraved plant/figure -->
+          <g stroke="#E8DDC0" stroke-width="1.1" fill="none" opacity="0.85">
+            <path d="M90 290 C 130 282, 160 265, 178 240 C 196 216, 190 192, 206 178"/>
+            <path d="M206 178 C 198 148, 214 116, 202 84 C 192 58, 206 32, 198 8" stroke="#C6A038" stroke-width="1.6"/>
+          </g>
+          <g fill="#8A2C2C" opacity="0.9">
+            <path d="M200 118 C 168 110, 152 84, 160 60 C 190 66, 208 90, 200 118Z"/>
+            <path d="M198 66 C 226 54, 240 28, 234 4 C 206 12, 190 36, 198 66Z" opacity="0.75"/>
+          </g>
+          <g transform="translate(198,8)">
+            <circle r="6" fill="#E7C766"/>
+            <path d="M0 0 C 9 -12, 22 -12, 20 2 C 18 14, 4 16, 0 0Z" fill="#8A2C2C"/>
+            <path d="M0 0 C -9 -12, -22 -12, -20 2 C -18 14, -4 16, 0 0Z" fill="#8A2C2C" opacity="0.85"/>
+          </g>
+          <!-- crosshatch shading -->
+          <g stroke="#E8DDC0" stroke-width="0.5" opacity="0.25">
+            <path d="M100 300 l10 -10 M108 302 l10 -10 M116 304 l10 -10"/>
+          </g>
+        </svg>
+      </div>
+
+      <h1>Every myth ends<br>in a <span class="accent">seed</span>.</h1>
+      <div class="role">Afrooz Areffard, writing as <strong>Atessa</strong></div>
+      <p class="lede">Independent researcher and writer tracing how ancient heroes, across unrelated cultures, are carried into their afterlives inside a plant &mdash; and what that pattern reveals about exile, memory, and the self.</p>
+      <div class="hero-actions">
+        <a class="btn solid" href="#book">Read the Book</a>
+        <a class="btn ghost" href="#research">See the Research</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <svg class="bg-motif" viewBox="0 0 300 300" width="460" height="460" style="top:-100px; right:-120px;" fill="none">
+      <g stroke="#C6A038" stroke-width="1" opacity="0.14">
+        <path d="M150 280 C 148 220, 152 160, 150 40"/>
+        <path d="M150 250 C 130 244, 112 252, 104 268"/><path d="M150 250 C 170 244, 188 252, 196 268"/>
+        <path d="M150 220 C 128 214, 108 222, 98 240"/><path d="M150 220 C 172 214, 192 222, 202 240"/>
+        <path d="M150 190 C 126 184, 104 192, 92 212"/><path d="M150 190 C 174 184, 196 192, 208 212"/>
+        <path d="M150 160 C 128 154, 108 160, 98 178"/><path d="M150 160 C 172 154, 192 160, 202 178"/>
+        <path d="M150 130 C 132 125, 116 130, 108 146"/><path d="M150 130 C 168 125, 184 130, 192 146"/>
+      </g>
+    </svg>
+    <div class="wrap">
+      <div class="about-inner">
+        <div class="plate-no">PLATE I &middot; ABOUT</div>
+        <h2>An Iranian-born researcher, writing between two languages and one long argument.</h2>
+        <p class="pull">Nature is a vast graveyard, where every plant and tree is a headstone, crying out the name of a myth from the depths of its being.</p>
+      </div>
+      <div class="bio">
+        <p>Afrooz Areffard writes under the pen name <strong style="color:var(--gold-bright)">Atessa</strong>. Born and educated in Iran, she now lives and works in Leicester, United Kingdom, where she researches comparative mythology independently &mdash; reading myths of death, exile, and transformation across cultures that never spoke to one another, looking for the shape they share.</p>
+        <p>Her first book, <em>Blood and Blossom</em>, grew out of a simple observation repeated in unrelated traditions: a hero dies, and something of him keeps growing. She is currently developing further doctoral-level research that extends this comparative method beyond the book.</p>
+      </div>
+      <dl class="facts">
+        <div class="fact"><dt>Based In</dt><dd>Leicester, UK</dd></div>
+        <div class="fact"><dt>Education</dt><dd>MA Comparative Literature</dd></div>
+        <div class="fact"><dt>Languages</dt><dd>Persian &middot; English</dd></div>
+        <div class="fact"><dt>Focus</dt><dd>Myth &amp; the afterlives of heroes</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- MYTHS PLATES -->
+  <section id="myths">
+    <div class="wrap">
+      <div class="plate-no" style="justify-content:center;">PLATE II &middot; TWELVE NARRATIVES, SIX CULTURES</div>
+      <h2 style="text-align:center; margin:0 auto; max-width:26ch;">Five heroes, five transformations.</h2>
+      <div class="plates-grid">
+
+        <!-- ADONIS -->
+        <div class="plate">
+          <div class="plate-frame">
+            <svg viewBox="0 0 120 150" fill="none">
+              <rect width="120" height="150" fill="#0D0A07"/>
+              <g transform="rotate(24 60 80)">
+                <g fill="#1A1310" stroke="#8A2C2C" stroke-width="1.1">
+                  <path d="M56 30 C 50 30,46 34,46 40 C46 44,48 47,51 49 L50 54 L58 54 L57 49 C62 47,65 43,65 38 C66 36,70 36,70 33 C69 31,66 31,65 32 C63 29,59 28,56 30 Z"/>
+                  <path d="M52 54 L58 54 L60 62 L50 62 Z"/>
+                  <path d="M38 66 C38 62,44 60,55 60 C66 60,72 62,72 66 L70 96 C70 100,64 102,55 102 C46 102,40 100,40 96 Z"/>
+                  <path d="M40 96 C40 100,46 104,55 104 C64 104,70 100,70 96 L74 112 C74 116,64 118,55 118 C46 118,36 116,36 112 Z"/>
+                </g>
+                <g stroke="#8A2C2C" stroke-width="1.3" fill="none">
+                  <path d="M50 116 C 48 122, 46 128, 42 132"/>
+                  <path d="M62 116 C 66 122, 68 126, 72 130"/>
+                </g>
+                <path d="M40 68 C 30 66, 24 70, 22 78" stroke="#8A2C2C" stroke-width="1.3" fill="none"/>
+                <path d="M70 68 C 80 70, 84 76, 82 84" stroke="#8A2C2C" stroke-width="1.3" fill="none"/>
+              </g>
+              <g transform="translate(84,58)">
+                <path d="M0 0 C -10 -9, -8 -20, 2 -24 C 10 -19, 8 -8, 0 0 Z" fill="#8A2C2C"/>
+                <path d="M0 0 C 9 -7, 19 -6, 21 4 C 13 9, 4 7, 0 0 Z" fill="#8A2C2C" opacity="0.85"/>
+                <path d="M0 0 C -6 7, -4 16, 5 18 C 11 11, 7 4, 0 0 Z" fill="#8A2C2C" opacity="0.8"/>
+                <circle r="3.6" fill="#E7C766"/>
+              </g>
+              <path d="M8 132 C 40 138, 80 138, 112 130" stroke="#E8DDC0" stroke-width="0.6" opacity="0.3"/>
+            </svg>
+          </div>
+          <div class="plate-cap">Adonis</div>
+          <div class="plate-sub">ANEMONE&nbsp;&middot;&nbsp;GREECE</div>
+        </div>
+
+        <!-- OSIRIS -->
+        <div class="plate">
+          <div class="plate-frame">
+            <svg viewBox="0 0 120 150" fill="none">
+              <rect width="120" height="150" fill="#0D0A07"/>
+              <path d="M60 30 C 52 30,46 34,45 42 L42 128 C42 132,48 134,60 134 C72 134,78 132,78 128 L75 42 C74 34,68 30,60 30Z" fill="#1A1310" stroke="#8A2C2C" stroke-width="1.1"/>
+              <g stroke="#8A2C2C" stroke-width="0.5" opacity="0.6">
+                <path d="M46 50 H74 M45 64 H75 M45 78 H75 M45 92 H75 M45 106 H75 M45 120 H75"/>
+              </g>
+              <g stroke="#C6A038" stroke-width="1.3" fill="none">
+                <path d="M42 48 C 36 44, 34 38, 38 34"/>
+                <path d="M78 48 C 84 44, 86 38, 82 34"/>
+              </g>
+              <path d="M60 30 C 60 14, 56 4, 60 -6 C 64 4, 60 14, 60 30 Z" fill="none" stroke="#E7C766" stroke-width="1.2"/>
+              <path d="M50 28 C 46 18, 40 14, 34 12" stroke="#E7C766" stroke-width="1"/>
+              <path d="M70 28 C 74 18, 80 14, 86 12" stroke="#E7C766" stroke-width="1"/>
+              <g stroke="#57623F" stroke-width="1.2"><path d="M60 134 V102"/></g>
+              <g fill="#57623F">
+                <ellipse cx="60" cy="96" rx="4" ry="9"/>
+                <ellipse cx="52" cy="104" rx="4" ry="9" transform="rotate(-20 52 104)"/>
+                <ellipse cx="68" cy="104" rx="4" ry="9" transform="rotate(20 68 104)"/>
+                <ellipse cx="60" cy="112" rx="4" ry="9"/>
+              </g>
+            </svg>
+          </div>
+          <div class="plate-cap">Osiris</div>
+          <div class="plate-sub">WHEAT&nbsp;&middot;&nbsp;EGYPT</div>
+        </div>
+
+        <!-- SIYAVASH -->
+        <div class="plate">
+          <div class="plate-frame">
+            <svg viewBox="0 0 120 150" fill="none">
+              <rect width="120" height="150" fill="#0D0A07"/>
+              <g fill="#1A1310" stroke="#E8DDC0" stroke-width="1.1">
+                <path d="M56 26 C50 26,46 30,46 36 C46 40,48 43,51 45 L50 50 L58 50 L57 45 C62 43,65 39,65 34 C66 32,70 32,70 29 C69 27,66 27,65 28 C63 25,59 24,56 26 Z"/>
+                <path d="M52 50 L58 50 L60 58 L50 58 Z"/>
+                <path d="M36 62 C36 58,44 56,55 56 C66 56,74 58,74 62 L71 108 C71 112,64 114,55 114 C46 114,39 112,39 108 Z"/>
+              </g>
+              <g stroke="#E8DDC0" stroke-width="1.2" fill="none">
+                <path d="M48 110 C 46 116, 44 122, 40 128"/>
+                <path d="M64 110 C 68 116, 70 120, 76 124"/>
+              </g>
+              <path d="M36 64 C 28 62, 22 66, 20 74" stroke="#E8DDC0" stroke-width="1.2" fill="none"/>
+              <path d="M74 64 C 84 66, 88 72, 86 80" stroke="#E8DDC0" stroke-width="1.2" fill="none"/>
+              <g fill="#8A2C2C" opacity="0.85">
+                <path d="M14 130 C 8 112, 18 96, 12 78 C 26 86, 30 106, 22 122 C 20 126, 18 129, 14 130Z"/>
+                <path d="M104 130 C 110 112, 100 96, 106 78 C 92 86, 88 106, 96 122 C 98 126, 100 129, 104 130Z"/>
+              </g>
+              <g fill="#C6A038" opacity="0.7">
+                <path d="M16 128 C 12 116, 18 104, 14 90 C 22 96, 26 110, 20 122Z"/>
+                <path d="M102 128 C 106 116, 100 104, 104 90 C 96 96, 92 110, 98 122Z"/>
+              </g>
+              <g stroke="#57623F" stroke-width="1.4">
+                <path d="M46 132 V104"/>
+                <path d="M46 122 C 38 118,32 122,29 130"/>
+                <path d="M46 122 C 54 118,60 122,63 130"/>
+                <path d="M46 112 C 40 109,35 112,33 118"/>
+                <path d="M46 112 C 52 109,57 112,59 118"/>
+              </g>
+            </svg>
+          </div>
+          <div class="plate-cap">Siyavash</div>
+          <div class="plate-sub">FERN&nbsp;&middot;&nbsp;PERSIA</div>
+        </div>
+
+        <!-- NARCISSUS -->
+        <div class="plate">
+          <div class="plate-frame">
+            <svg viewBox="0 0 120 150" fill="none">
+              <rect width="120" height="150" fill="#0D0A07"/>
+              <g stroke="#E8DDC0" stroke-width="1.2" fill="none">
+                <path d="M50 108 C 42 112, 30 112, 22 120"/>
+                <path d="M22 120 C 18 124, 18 130, 24 134"/>
+                <path d="M62 108 C 70 112, 82 110, 92 114"/>
+              </g>
+              <g fill="#1A1310" stroke="#E8DDC0" stroke-width="1.1">
+                <path d="M42 108 C 40 96, 46 88, 56 88 C 66 88, 72 96, 70 108 C 69 114, 62 118, 56 118 C 50 118, 43 114, 42 108Z"/>
+              </g>
+              <g transform="rotate(58 56 88)">
+                <g fill="#1A1310" stroke="#E8DDC0" stroke-width="1.1">
+                  <path d="M40 86 C 40 78, 47 74, 56 74 C 65 74, 72 78, 72 86 L 70 100 C 70 104, 64 106, 56 106 C 48 106, 42 104, 42 100 Z"/>
+                  <path d="M50 74 L 62 74 L 60 66 L 52 66 Z"/>
+                  <path d="M46 62 C 46 56, 50 52, 56 52 C 62 52, 66 56, 66 62 C 66 66, 63 69, 60 70 L 62 74 L 50 74 L 52 70 C 49 69, 46 66, 46 62Z"/>
+                </g>
+                <path d="M40 88 C 32 90, 26 96, 26 104" stroke="#E8DDC0" stroke-width="1.2" fill="none"/>
+                <path d="M72 88 C 80 90, 86 96, 86 104" stroke="#E8DDC0" stroke-width="1.2" fill="none"/>
+              </g>
+              <ellipse cx="58" cy="128" rx="42" ry="10" stroke="#C6A038" stroke-width="1" opacity="0.7" fill="#120D08"/>
+              <ellipse cx="58" cy="128" rx="34" ry="6.5" stroke="#C6A038" stroke-width="0.5" opacity="0.4"/>
+              <g opacity="0.35" transform="translate(58,128) scale(1,-0.55) translate(-58,-128)">
+                <circle cx="58" cy="112" r="10" fill="none" stroke="#E8DDC0" stroke-width="0.8"/>
+              </g>
+              <g fill="#A9812F" opacity="0.9" transform="translate(100,120)">
+                <path d="M0 0 C -8 -5,-13 -13,-9 -20 C -1 -17,4 -8,0 0Z"/>
+                <path d="M0 0 C 8 -5,13 -13,9 -20 C 1 -17,-4 -8,0 0Z" opacity="0.85"/>
+                <circle r="3" fill="#8A2C2C"/>
+              </g>
+              <g fill="#A9812F" opacity="0.7" transform="translate(14,122) scale(0.8)">
+                <path d="M0 0 C -8 -5,-13 -13,-9 -20 C -1 -17,4 -8,0 0Z"/>
+                <path d="M0 0 C 8 -5,13 -13,9 -20 C 1 -17,-4 -8,0 0Z" opacity="0.85"/>
+                <circle r="3" fill="#8A2C2C"/>
+              </g>
+            </svg>
+          </div>
+          <div class="plate-cap">Narcissus</div>
+          <div class="plate-sub">NARCISSUS&nbsp;&middot;&nbsp;GREECE</div>
+        </div>
+
+        <!-- DIONYSUS ZAGREUS -->
+        <div class="plate">
+          <div class="plate-frame">
+            <svg viewBox="0 0 120 150" fill="none">
+              <rect width="120" height="150" fill="#0D0A07"/>
+              <g fill="#1A1310" stroke="#E8DDC0" stroke-width="1.1">
+                <circle cx="58" cy="46" r="16"/>
+                <path d="M42 92 C 40 74,48 64,58 64 C68 64,76 74,74 92 C73 102,66 108,58 108 C50 108,43 102,42 92Z"/>
+              </g>
+              <g stroke="#E8DDC0" stroke-width="1.1" fill="none">
+                <path d="M46 96 C 42 104, 40 112, 44 120"/>
+                <path d="M70 96 C 74 104, 76 112, 72 120"/>
+              </g>
+              <g transform="translate(58,88)">
+                <circle r="12" fill="#3B1010" stroke="#8A2C2C" stroke-width="1.1"/>
+                <path d="M-3 -12 C -6 -16, -1 -19, 0 -15 C 1 -19, 6 -16, 3 -12Z" fill="#8A2C2C"/>
+                <g fill="#8A2C2C" opacity="0.9">
+                  <circle cx="-4" cy="-2" r="2.6"/><circle cx="3" cy="-4" r="2.6"/><circle cx="5" cy="3" r="2.6"/>
+                  <circle cx="-3" cy="5" r="2.6"/><circle cx="0" cy="0" r="2.6"/>
+                </g>
+              </g>
+            </svg>
+          </div>
+          <div class="plate-cap">Zagreus</div>
+          <div class="plate-sub">POMEGRANATE&nbsp;&middot;&nbsp;GREECE</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOK -->
+  <section id="book">
+    <svg class="bg-motif" viewBox="0 0 300 300" width="420" height="420" style="bottom:-110px; left:-100px;" fill="none">
+      <g stroke="#8A2C2C" stroke-width="1" opacity="0.16">
+        <circle cx="150" cy="150" r="90"/>
+      </g>
+      <g fill="#8A2C2C" opacity="0.14">
+        <circle cx="120" cy="130" r="6"/><circle cx="140" cy="118" r="6"/><circle cx="162" cy="128" r="6"/>
+        <circle cx="180" cy="146" r="6"/><circle cx="128" cy="156" r="6"/><circle cx="150" cy="150" r="6"/>
+        <circle cx="172" cy="168" r="6"/><circle cx="112" cy="176" r="6"/><circle cx="136" cy="186" r="6"/>
+      </g>
+    </svg>
+    <div class="wrap">
+      <div class="plate-no">PLATE III &middot; THE BOOK</div>
+      <h2 style="max-width:14ch;">Blood and Blossom</h2>
+      <div class="book-grid" style="margin-top:44px;">
+        <div class="frame">
+          <div class="corner c-tl"><svg viewBox="0 0 20 20" fill="none"><path d="M2 18V6C2 3.8 3.8 2 6 2H18" stroke="#C6A038" stroke-width="1.2"/></svg></div>
+          <div class="corner c-tr"><svg viewBox="0 0 20 20" fill="none"><path d="M2 18V6C2 3.8 3.8 2 6 2H18" stroke="#C6A038" stroke-width="1.2"/></svg></div>
+          <div class="corner c-bl"><svg viewBox="0 0 20 20" fill="none"><path d="M2 18V6C2 3.8 3.8 2 6 2H18" stroke="#C6A038" stroke-width="1.2"/></svg></div>
+          <div class="corner c-br"><svg viewBox="0 0 20 20" fill="none"><path d="M2 18V6C2 3.8 3.8 2 6 2H18" stroke="#C6A038" stroke-width="1.2"/></svg></div>
+          <div class="frame-inner" id="coverFrame">
+            <img src="cover.jpg" alt="Blood and Blossom — book cover"
+                 onerror="this.style.display='none'; document.getElementById('covFallback').style.display='block';">
+            <div class="cov-fallback" id="covFallback">
+              <div class="cov-eyebrow">A COMPARATIVE STUDY</div>
+              <div class="cov-title">Blood and<br>Blossom</div>
+              <div class="cov-sub">How Ancient Myths Live On in Plants</div>
+              <svg viewBox="0 0 64 64" fill="none"><path d="M32 60V20" stroke="#E8DDC0" stroke-width="1.3"/>
+                <path d="M32 34C20 30 16 18 20 8c14 4 18 16 12 26Z" fill="#E8DDC0" opacity="0.8"/>
+                <path d="M32 44C44 40 48 28 44 18c-14 4-18 16-12 26Z" fill="#E8DDC0" opacity="0.55"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="book-copy">
+          <p class="lede">Twelve narratives, six cultures, one recurring pattern: the hero&rsquo;s death gives rise to a plant that carries his essence forward, without displacement. From Adonis&rsquo;s anemone to Siyavash&rsquo;s fern, <em>Blood and Blossom</em> traces a shape that ancient peoples understood long before it had a name.</p>
+          <p>Drawing on primary sources from Ovid to the Shahnameh, from the Coffin Texts to the Bundahishn, the book moves between Greek, Phrygian, Egyptian, Persian, West African, and Christian traditions &mdash; treating each on its own terms, without privileging any one of them.</p>
+          <div class="culture-row">
+            <span class="chip">GREEK</span><span class="chip">PHRYGIAN</span><span class="chip">EGYPTIAN</span>
+            <span class="chip">PERSIAN</span><span class="chip">WEST&nbsp;AFRICAN&nbsp;/&nbsp;IGBO</span><span class="chip">CHRISTIAN</span>
+          </div>
+          <div class="book-buy">
+            <a class="btn solid" href="https://amzn.eu/d/0h82q5qM" target="_blank" rel="noopener">Buy on Amazon</a>
+            <a class="btn ghost" href="#contact">Request a Review Copy</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH -->
+  <section id="research">
+    <svg class="bg-motif" viewBox="0 0 300 300" width="440" height="440" style="top:-80px; right:-90px;" fill="none">
+      <g stroke="#C6A038" stroke-width="1" opacity="0.14">
+        <path d="M150 260V70"/><path d="M120 260 L138 76"/><path d="M180 260 L162 76"/>
+      </g>
+    </svg>
+    <div class="wrap">
+      <div class="plate-no">PLATE IV &middot; RESEARCH</div>
+      <h2>Beyond the book: an ongoing research interest.</h2>
+      <p class="lede" style="margin-top:24px;">The book&rsquo;s method &mdash; comparing independent traditions at the level of structure, not shared origin &mdash; is the starting point for a wider line of research, not its conclusion.</p>
+      <div class="research-wrap" style="margin-top:44px;">
+        <div class="card">
+          <span class="tag-status">ONGOING INTEREST</span>
+          <h3>Comparative Mythology &amp; World Literature</h3>
+          <p>A continuing interest in reading mythological traditions side by side, without hierarchy &mdash; in the spirit of world-literature scholarship &mdash; and in what happens to a hero&rsquo;s identity when it survives inside a non-human form.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WRITING -->
+  <section id="writing">
+    <svg class="bg-motif" viewBox="0 0 300 300" width="400" height="400" style="bottom:-90px; left:-80px;" fill="none">
+      <g stroke="#C6A038" stroke-width="1" opacity="0.15">
+        <path d="M150 260V130"/><ellipse cx="150" cy="90" rx="34" ry="34"/><circle cx="150" cy="90" r="13"/>
+      </g>
+    </svg>
+    <div class="wrap">
+      <div class="plate-no">PLATE V &middot; WRITING</div>
+      <h2>Other work.</h2>
+      <div class="writing-grid" style="margin-top:44px;">
+        <div class="wcard"><span class="num">i.</span><h3>Poetry</h3>
+          <p>Twenty-one poems published on She&rsquo;r-e No (shereno.com), 2013&ndash;2017, including &ldquo;Mourning of Siyavash.&rdquo;</p></div>
+        <div class="wcard"><span class="num">ii.</span><h3>Fiction</h3>
+          <p>Six completed, unpublished novels, written in Persian across a range of literary registers.</p></div>
+        <div class="wcard"><span class="num">iii.</span><h3>Community &amp; Volunteering</h3>
+          <p>Library volunteer, Evington Library; volunteer teacher, Women Empowerment Network (WEN); museum volunteer since 2022.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <svg class="bg-motif" viewBox="0 0 300 300" width="440" height="440" style="top:-100px; left:-90px;" fill="none">
+      <g stroke="#8A2C2C" stroke-width="1" opacity="0.15">
+        <path d="M150 270V150"/>
+        <path d="M150 150 C 130 132, 128 100, 150 78 C 172 100, 170 132, 150 150Z"/>
+        <path d="M150 150 C 118 148, 92 128, 92 100 C 122 96, 148 116, 150 150Z"/>
+        <path d="M150 150 C 182 148, 208 128, 208 100 C 178 96, 152 116, 150 150Z"/>
+      </g>
+    </svg>
+    <div class="wrap">
+      <div class="plate-no">PLATE VI &middot; CONTACT</div>
+      <div class="contact-grid" style="margin-top:44px;">
+        <div>
+          <h2>Get in touch.</h2>
+          <p class="lede" style="margin-top:20px;">For review copies, speaking enquiries, academic correspondence, or just to talk about myth &mdash; write any time.</p>
+          <div class="hero-actions" style="justify-content:flex-start;">
+            <a class="btn solid" href="mailto:a.areffard2737@gmail.com">Email Atessa</a>
+          </div>
+        </div>
+        <ul class="social-list">
+          <li><a href="https://instagram.com/atessa.writer" target="_blank" rel="noopener">Instagram <span class="h">@atessa.writer</span></a></li>
+          <li><a href="https://tiktok.com/@atessa_afrooz" target="_blank" rel="noopener">TikTok <span class="h">@atessa_afrooz</span></a></li>
+          <li><a href="https://amzn.eu/d/0h82q5qM" target="_blank" rel="noopener">Amazon <span class="h">Blood and Blossom</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <svg viewBox="0 0 24 24" fill="none"><path d="M12 22V10M12 10C12 6 9 4 6 4c0 4 2 6 6 6ZM12 10c0-4 3-6 6-6 0 4-2 6-6 6Z" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg><br>
+  &copy; <span id="yr"></span> AFROOZ AREFFARD &middot; ATESSA
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => links.classList.toggle('open'));
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+  const io = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }); }, { threshold: 0.2 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
